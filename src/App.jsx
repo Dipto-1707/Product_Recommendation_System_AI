@@ -20,7 +20,8 @@ import "./App.css";
 import ProductList, { products } from "./components/ProductList";
 import PreferenceInput from "./components/PreferenceInput";
 import RecommendationBox from "./components/RecommendationBox";
-import { getRecommendation } from "./config/gemini";
+import { getRecommendation } from "./utils/getRecommendation";
+// import { getRecommendation } from "./config/gemini";
 
 export default function App() {
   const [response, setResponse] = useState([]);
