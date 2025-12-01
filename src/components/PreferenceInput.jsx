@@ -12,7 +12,7 @@ function PreferenceInput({ onSubmit }) {
     <form onSubmit={handleSubmit} className="mt-6 flex gap-3">
       <input
         type="text"
-        placeholder="I want a phone under $500"
+        placeholder="Type what you need.  eg.I want a phone under $500..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="flex-1 p-3 border rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
