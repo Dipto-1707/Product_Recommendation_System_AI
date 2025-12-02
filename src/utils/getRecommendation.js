@@ -2,7 +2,8 @@ import { groq } from "../config/groq";
 
 export async function getRecommendation(userInput, products) {
   try {
-    const names = products.map((p) => p.name).join(", ");
+    const productJson = JSON.stringify(products);
+
 
     const completion = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
@@ -10,15 +11,18 @@ export async function getRecommendation(userInput, products) {
         {
           role: "user",
           content: `
-                    User preference: ${userInput}
-                    Products available: ${names}
+            User preference: ${userInput}
 
-                    STRICT INSTRUCTIONS:
-                    - Return ONLY a JSON array of product names.
-                    - Do NOT add explanations.
-                    - No sentences. No extra text.
-                    - The response MUST look exactly like this: ["Product A", "Product B"]
-                  `,
+            Products available:
+            ${JSON.stringify(products)}
+
+          STRICT INSTRUCTIONS:
+        - Recommend ONLY from the given list.
+        - Consider price, category, and user intent.
+        - Output only a JSON array of product names.
+        - Example: ["Product A", "Product B"]
+        `,
+
         },
       ],
     });

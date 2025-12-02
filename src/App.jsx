@@ -28,16 +28,19 @@ export default function App() {
 
   const handleUserInput = async (input) => {
     const aiResponse = await getRecommendation(input, products);
-    const productsFromOurList = products.filter((p) => aiResponse.includes(p.name));
+    const productsFromOurList = products.filter((p) =>
+      aiResponse.includes(p.name)
+    );
     setResponse(productsFromOurList);
   };
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-
       <h1 className="relative text-3xl font-bold text-center">
         AI Product Recommendation
-        <span className=" absolute top-2 right-2 text-sm font-light">Sudipta Roy</span>
+        <span className=" absolute top-2 right-2 text-sm font-light">
+          Sudipta Roy
+        </span>
       </h1>
 
       <ProductList />
